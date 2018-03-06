@@ -19,7 +19,7 @@ class Application
         resp.write "#{item}\n"
       end
     elsif req.path.match(/add/)
-      
+      item = req.params["item"]
       @@cart << item if handle_search(item) == "#{item} is one of our items"
     else
       resp.write "Path Not Found"
