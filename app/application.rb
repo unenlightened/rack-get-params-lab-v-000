@@ -19,11 +19,8 @@ class Application
         resp.write "#{item}\n"
       end
     elsif req.path.match(/add/)
-
-      if @@items.include?(add_item)  #could reuse handle_search here, but the returns aren't that friendly to use
-        @@cart << add_item
-      else
-        resp.write "Couldn't add "
+      
+      @@cart << item if handle_search(item) == "#{item} is one of our items"
     else
       resp.write "Path Not Found"
     end
